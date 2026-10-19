@@ -32,13 +32,22 @@ The algorithms used for each problem are documented below.
 
 | Problem | Algorithm | Main Objective |
 |---|---|---|
-| TSP | [Algorithm to be determined] | Minimize the total tour cost |
+| TSP | Held–Karp dynamic programming; Nearest Neighbour with Or-opt improvement | Minimize the total tour cost |
 | CPP | Minimum-cost flow and Eulerian circuit | Traverse the required roads and return to the base |
 | Knight's Tour | Iterative depth-first backtracking with Warnsdorff's rule | Visit every chessboard square exactly once |
 
 ### TSP
 
-[To be filled in]
+* **Road network:** Load road data from OpenStreetMap and represent it as a directed graph.
+* **School selection:** Retrieve school locations and select those within the specified radius of the chosen SPPG.
+* **Road distances:** Calculate shortest-path distances between locations using Dijkstra's algorithm. These distances form the cost matrix used by the TSP solver.
+* **Exact solution:** Use Held–Karp dynamic programming for small instances to find an optimal tour.
+* **Heuristic solution:** Use Nearest Neighbour to construct an initial tour and Or-opt to improve the route for larger instances.
+* **Route visualization:** Display the resulting road route, school visiting order, total distance, estimated travel time, and solver execution time.
+
+The route starts and ends at the selected SPPG. Schools are visited once in the planned tour, while road segments may be reused when connecting locations. Estimated travel time is calculated using an assumed average speed of 25 km/h, not live traffic conditions.
+
+The exact algorithm is suitable for smaller instances, while the heuristic approach provides a more practical alternative for larger instances. Results depend on the available OpenStreetMap data.
 
 ### CPP
 
