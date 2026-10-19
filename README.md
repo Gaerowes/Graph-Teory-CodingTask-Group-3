@@ -1,35 +1,74 @@
 # Graph-Teory-CodingTask-Group-3
- 
+
 ## 1. Identity
 **Informatics ITS Graph Theory class Group 3**
- 
+
 * Dzulfiqar Rafi'ussunnah - 5025251011
 * Padhang Abiyu Fikri - 5025251014
 * Aditya Lingga Mardika - 5025251158
 * Muhammad Faris Alfarrel - 5025251002
-## 2. Task 3: Knight's Tour
- 
-Given a chessboard of `cols x rows` squares and a starting square, find a sequence of legal knight moves that visits every square exactly once. If no such sequence exists, the program prints `path not found`.
- 
-Coordinates are `(column, row)`, 0-indexed, matching the assignment grid (`0,0` is the top-left square).
- 
-## 3. Algorithm
- 
+
+
+
+## Project Overview
+
+This project implements solutions for the following problems:
+
+### 1. Travelling Salesman Problem (TSP)
+
+Find a minimum-cost tour that starts at a selected location, visits every location exactly once, and returns to the starting location.
+
+### 2. Chinese Postman Problem (CPP)
+
+Find an efficient route for a dump truck that starts and ends at its base and traverses the required road segments within a specified radius. Road segments may be revisited when necessary.
+
+### 3. Knight's Tour
+
+Find a sequence of legal knight moves that visits every square on a chessboard exactly once.
+
+## Algorithms
+
+The algorithms used for each problem are documented below.
+
 | Problem | Algorithm | Main Objective |
 |---|---|---|
+| TSP | [Algorithm to be determined] | Minimize the total tour cost |
+| CPP | [Algorithm to be determined] | Minimize the cost of traversing all required roads |
 | Knight's Tour | Iterative depth-first backtracking with Warnsdorff's rule | Visit every chessboard square exactly once |
- 
+
+### TSP
+
+[To be filled in]
+
+### CPP
+
+[To be filled in]
+
+### Knight's Tour
+
 - **Warnsdorff's rule:** from the current square, try the unvisited neighbour with the fewest onward moves first. Ties are broken by preferring squares farther from the board centre. Neighbour degrees are updated incrementally, so each step costs O(1).
 - **Backtracking:** if a dead end is reached, the last move is undone and the next candidate is tried, so the search is exhaustive and `path not found` is exact.
 - **Early rejection:** no tour exists when one board side is 2 or less (and the board has more than one square), or when the board has an odd number of squares and the starting square has an odd `column + row`.
 - **Search limit:** the search stops after 20,000,000 nodes and prints `path not found` (only relevant for very large boards).
 - **Iterative search:** an explicit stack is used instead of recursion, so large boards do not hit Python's recursion limit.
-## 4. Prerequisites
- 
-- Python 3.8 or newer (no external packages)
+
+Coordinates are `(column, row)`, 0-indexed, matching the assignment grid (`0,0` is the top-left square).
+
+## Prerequisites
+
+- Python 3.8 or newer
 - Git
-## 5. Repository Structure
- 
+
+Dependencies per problem:
+
+| Problem | Additional dependencies |
+|---|---|
+| TSP | [To be filled in] |
+| CPP | [To be filled in] |
+| Knight's Tour | None (standard library only) |
+
+## Repository Structure
+
 ```text
 Graph-Teory-CodingTask-Group-3/
 ├── tsp/
@@ -42,68 +81,120 @@ Graph-Teory-CodingTask-Group-3/
 │   └── input.txt
 └── README.md
 ```
- 
-## 6. Installation
- 
+
+The directory and file names may be adjusted to match the final implementation.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Gaerowes/Graph-Teory-CodingTask-Group-3.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Graph-Teory-CodingTask-Group-3
+   ```
+
+3. Install the required dependencies, if any:
+
+   - TSP: [To be filled in]
+   - CPP: [To be filled in]
+   - Knight's Tour: nothing to install
+
+## How to Run
+
+### TSP
+
 ```bash
-git clone https://github.com/Gaerowes/Graph-Teory-CodingTask-Group-3.git
-cd Graph-Teory-CodingTask-Group-3/knights_tour
+python tsp/main.py
 ```
- 
-No dependencies need to be installed.
- 
-## 7. How to Run
- 
+
+[To be filled in]
+
+### CPP
+
+```bash
+python cpp/main.py
+```
+
+[To be filled in]
+
+### Knight's Tour
+
 Input format (two lines):
- 
+
 ```text
 <cols> <rows>
 <start_col> <start_row>
 ```
- 
+
 **Windows (PowerShell)**
- 
+
 ```powershell
+cd knights_tour
 "5 5`n2 2" | python main.py
 ```
- 
+
 or from a file:
- 
+
 ```powershell
 Get-Content input.txt | python main.py
 ```
- 
+
 **Linux / macOS / Git Bash**
- 
+
 ```bash
+cd knights_tour
 printf "5 5\n2 2\n" | python3 main.py
 ```
- 
+
 or from a file:
- 
+
 ```bash
 python3 main.py < input.txt
 ```
- 
+
 Run the self-checks (validates each tour and tests cases with no solution):
- 
+
 ```bash
 python verify.py
 ```
- 
-## 8. Sample Cases
- 
-### Sample 1: tour found
- 
+
+## Sample Cases
+
+### TSP
+
+- **Input:** A set of locations and the travel cost between each pair.
+- **Expected output:** A minimum-cost tour and its total cost.
+
+[Sample input and output to be filled in]
+
+### CPP
+
+- **Input:** A road network, a dump truck base location, and a selected radius.
+- **Expected output:** A suggested route, road traversal order, total distance, estimated travel time, and solver execution time.
+
+[Sample input and output to be filled in]
+
+### Knight's Tour
+
+- **Input:** Chessboard dimensions and a starting square.
+- **Expected output:** A sequence of legal knight moves that visits each square exactly once, if a solution exists.
+
+**Sample 1: tour found**
+
 Input:
- 
+
 ```text
 5 5
 2 2
 ```
- 
+
 Output (25 squares, in visiting order):
- 
+
 ```text
 2,2
 3,4
@@ -131,26 +222,26 @@ Output (25 squares, in visiting order):
 2,1
 4,0
 ```
- 
-### Sample 2: no tour exists
- 
+
+**Sample 2: no tour exists**
+
 Input:
- 
+
 ```text
 5 5
 1 0
 ```
- 
+
 Output:
- 
+
 ```text
 path not found
 ```
- 
+
 The board has 25 squares (odd) and the start square has `1 + 0` odd, so no tour exists.
- 
-### Other tested cases
- 
+
+**Other tested cases**
+
 | Input (cols rows / start) | Result |
 |---|---|
 | 8 8 / 0 0 | tour found |
@@ -160,18 +251,24 @@ The board has 25 squares (odd) and the start square has `1 + 0` odd, so no tour 
 | 30 30 / 0 0 | tour found |
 | 3 3 / 0 0 | path not found |
 | 4 4 / 0 0 | path not found |
- 
-## 9. Computational Complexity
- 
-Let `N = cols x rows`.
- 
-| Case | Time | Space |
+
+## Computational Complexity
+
+The computational complexity of each algorithm is discussed in the final report, together with its implementation details and performance analysis.
+
+| Problem | Time | Space |
 |---|---|---|
-| Warnsdorff, no backtracking | O(N) | O(N) |
-| Worst case with backtracking | O(8^N) | O(N) |
- 
-Each step inspects at most 8 moves, each with at most 8 degree checks, so a step is O(1). The exponential bound applies only when the search must be exhausted (no tour) or backtracks heavily. See the PDF report for the full analysis.
- 
-## 10. Acknowledgment
- 
+| TSP | [To be filled in] | [To be filled in] |
+| CPP | [To be filled in] | [To be filled in] |
+| Knight's Tour | O(N) typical with Warnsdorff, O(8^N) worst case (N = cols x rows) | O(N) |
+
+## Project Deliverables
+
+- Source code for all three problems.
+- README documentation.
+- A PDF report explaining the algorithmic approaches, implementations, and computational complexities.
+- A live demonstration of the programs.
+
+## Acknowledgment
+
 Prepared as part of the Graph Theory course at Institut Teknologi Sepuluh Nopember (ITS).
