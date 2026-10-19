@@ -40,7 +40,6 @@ The algorithms used for each problem are documented below.
 
 - Python 3.x
 - Git
-- Required Python libraries, as listed in `requirements.txt` (if applicable)
 
 Additional dependencies will be specified for each problem if needed.
 
