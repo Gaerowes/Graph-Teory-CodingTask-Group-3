@@ -84,7 +84,7 @@ Dependencies per problem:
 
 | Problem | Additional dependencies |
 |---|---|
-| TSP | [To be filled in] |
+| TSP | Streamlit, Streamlit-Folium, Folium, OSMnx, NetworkX, pandas, scikit-learn |
 | CPP | OSMnx, NetworkX, Streamlit, streamlit-folium, Folium |
 | Knight's Tour | None (standard library only) |
 
@@ -92,8 +92,16 @@ Dependencies per problem:
 
 ```text
 Graph-Teory-CodingTask-Group-3/
-├── tsp/
-│   └── main.py
+├──  tsp/
+│   ├── cache/
+│   ├── tsp/
+│   │   ├── main.py
+│   │   ├── graph_loader.py
+│   │   ├── school_loader.py
+│   │   ├── routing.py
+│   │   └── tsp_solver.py
+│   ├── .gitignore
+│   └── README.md
 ├── cpp/
 │   ├── main.py
 │   └── requirements.txt
@@ -130,12 +138,20 @@ The directory and file names may be adjusted to match the final implementation.
 
 ### TSP
 
+From the repository root, run:
+
 ```bash
-python tsp/main.py
+python -m streamlit run tsp/tsp/main.py
 ```
 
-[To be filled in]
+Open the local URL displayed in the terminal.
 
+1. Select the SPPG location on the map.
+2. Set the radius used to select schools.
+3. Calculate the delivery route.
+4. Review the route visualization, school visiting order, total distance, estimated travel time, and solver execution time.
+
+An internet connection is required to retrieve OpenStreetMap data. Results may vary depending on the selected location, radius, and available map data.
 ### CPP
 
 ```bash
@@ -191,10 +207,10 @@ python verify.py
 
 ### TSP
 
-- **Input:** A set of locations and the travel cost between each pair.
-- **Expected output:** A minimum-cost tour and its total cost.
+- *Input:* A selected SPPG location, a search radius, school locations, and road data from OpenStreetMap.
+- *Expected output:* A closed road route, school visiting order, total distance, estimated travel time, and solver execution time.
 
-[Sample input and output to be filled in]
+Exact output values depend on the selected location, radius, and available OpenStreetMap data.
 
 ### CPP
 
@@ -281,7 +297,8 @@ The computational complexity of each algorithm is discussed in the final report,
 
 | Problem | Time | Space |
 |---|---|---|
-| TSP | [To be filled in] | [To be filled in] |
+| TSP — Held–Karp | O(n² · 2ⁿ) | O(n · 2ⁿ) |
+| TSP — Nearest Neighbour + Or-opt | Depends on implementation and number of improvement passes | Depends on the cost matrix and route representation |
 | CPP | Shortest paths and minimum-cost flow dominate; Eulerian circuit O(E) | O(V+E+A) |
 | Knight's Tour | O(N) typical with Warnsdorff, O(8^N) worst case (N = cols x rows) | O(N) |
 
