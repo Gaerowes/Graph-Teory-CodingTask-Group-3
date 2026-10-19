@@ -33,7 +33,7 @@ The algorithms used for each problem are documented below.
 | Problem | Algorithm | Main Objective |
 |---|---|---|
 | TSP | [Algorithm to be determined] | Minimize the total tour cost |
-| CPP | [Algorithm to be determined] | Minimize the cost of traversing all required roads |
+| CPP | Minimum-cost flow and Eulerian circuit | Traverse the required roads and return to the base |
 | Knight's Tour | Iterative depth-first backtracking with Warnsdorff's rule | Visit every chessboard square exactly once |
 
 ### TSP
@@ -42,7 +42,19 @@ The algorithms used for each problem are documented below.
 
 ### CPP
 
-[To be filled in]
+- **Road selection:** load Surabaya roads from OpenStreetMap and select trunk,
+  primary, secondary and tertiary roads within the chosen radius.
+- **Road directions:** use a directed graph, so one-way roads are followed correctly.
+- **Connecting roads:** add shortest road paths where necessary to connect the
+  selected roads to the base.
+- **Graph balancing:** repeat the cheapest directed roads until every vertex has
+  the same number of incoming and outgoing traversals.
+- **Eulerian circuit:** visit every selected road and return to the base.
+
+The app shows the route, street order, total distance, estimated travel time and
+CPP solver time. Connecting paths can leave the radius. The route is optimal for
+the connected graph used by the solver; the connector choice is a heuristic.
+
 
 ### Knight's Tour
 
@@ -64,7 +76,7 @@ Dependencies per problem:
 | Problem | Additional dependencies |
 |---|---|
 | TSP | [To be filled in] |
-| CPP | [To be filled in] |
+| CPP | OSMnx, NetworkX, Streamlit, streamlit-folium, Folium |
 | Knight's Tour | None (standard library only) |
 
 ## Repository Structure
@@ -74,7 +86,8 @@ Graph-Teory-CodingTask-Group-3/
 ├── tsp/
 │   └── main.py
 ├── cpp/
-│   └── main.py
+│   ├── main.py
+│   └── requirements.txt
 ├── knights_tour/
 │   ├── main.py
 │   ├── verify.py
@@ -101,7 +114,7 @@ The directory and file names may be adjusted to match the final implementation.
 3. Install the required dependencies, if any:
 
    - TSP: [To be filled in]
-   - CPP: [To be filled in]
+   - CPP: `pip install -r cpp/requirements.txt`
    - Knight's Tour: nothing to install
 
 ## How to Run
@@ -117,10 +130,12 @@ python tsp/main.py
 ### CPP
 
 ```bash
-python cpp/main.py
+streamlit run cpp/main.py
 ```
 
-[To be filled in]
+Open the local URL, click the map to choose the base, set the radius and average
+speed, then click **Calculate route**. An internet connection is needed to load
+OpenStreetMap roads.
 
 ### Knight's Tour
 
@@ -174,10 +189,9 @@ python verify.py
 
 ### CPP
 
-- **Input:** A road network, a dump truck base location, and a selected radius.
-- **Expected output:** A suggested route, road traversal order, total distance, estimated travel time, and solver execution time.
-
-[Sample input and output to be filled in]
+- **Input:** a Surabaya base, `1 km` radius and `25 km/h` average speed.
+- **Output:** a closed route, street traversal order, total distance, estimated
+  travel time and CPP solver time. Exact values depend on OpenStreetMap data.
 
 ### Knight's Tour
 
@@ -259,8 +273,12 @@ The computational complexity of each algorithm is discussed in the final report,
 | Problem | Time | Space |
 |---|---|---|
 | TSP | [To be filled in] | [To be filled in] |
-| CPP | [To be filled in] | [To be filled in] |
+| CPP | Shortest paths and minimum-cost flow dominate; Eulerian circuit O(E) | O(V+E+A) |
 | Knight's Tour | O(N) typical with Warnsdorff, O(8^N) worst case (N = cols x rows) | O(N) |
+
+For CPP, V is the number of nodes, E is the number of roads, and A is the
+number of repeated roads. Minimum-cost flow has no simple fixed runtime bound
+for this implementation.
 
 ## Project Deliverables
 
