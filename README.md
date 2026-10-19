@@ -3,8 +3,8 @@
 ## 1. Identity
 **Informatics ITS Graph Theory class Group 3**
 
-* Dzulfiqar Rafi'ussunnah - 5025251011
 * Padhang Abiyu Fikri - 5025251014
+* Dzulfiqar Rafi'ussunnah - 5025251011
 * Aditya Lingga Mardika - 5025251158
 * Muhammad Faris Alfarrel - 5025251002
 
